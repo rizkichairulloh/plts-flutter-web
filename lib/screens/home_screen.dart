@@ -34,11 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text("Anda Ingin Memasang PLTS", style: kTextHeader1,),
                   const SizedBox(height: 22,),
                   formDropdownButton(
-                      "Sambungan Rumah",
+                      "Tipe",
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton2(
                           hint: Text(
-                            'Pilih sambungan rumah',
+                            'Pilih tipe',
                             style: TextStyle(
                               fontSize: 14,
                               color: Theme.of(context).hintColor,
@@ -92,17 +92,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(height: paddingDefault,),
                   formDropdownButton(
-                      "Sambungan Rumah",
+                      "Besar Sambungan",
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton2(
                         hint: Text(
-                          'Pilih sambungan rumah',
+                          'Pilih besar sambungan',
                           style: TextStyle(
                             fontSize: 14,
                             color: Theme.of(context).hintColor,
                           ),
                         ),
-                        items: controller.itemsTransaction.map((item) =>
+                        items: controller.itemsBesarSambungan.map((item) =>
                             DropdownMenuItem<String>(
                               value: item.title,
                               child: Text(
@@ -115,7 +115,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             .toList(),
                         value: selectedValue2,
                         onChanged: (value) {
-
+                          setState(() {
+                            selectedValue2 = value as String;
+                          });
                         },
                         buttonHeight: 45,
                         buttonWidth: Get.width / 3,
