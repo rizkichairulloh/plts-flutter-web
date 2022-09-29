@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plts/utilities/constants.dart';
+import 'package:plts/utilities/responsive.dart';
 import 'package:plts/utilities/typography.dart';
 import 'package:plts/widgets/primary_button.dart';
 
@@ -21,13 +22,13 @@ class ResultScreen extends StatelessWidget {
                   Text("Kesimpulan", style: kTextHeader1,),
                   Text("Rekomendasi & Harga - as PDF", style: kTextBody,),
                   SizedBox(
-                    width: Get.width / 3,
+                    width: Responsive.isWeb(context) ? Get.width / 3 : Get.width,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(
                           height: 45,
-                          width: 200,
+                          width: Responsive.isWeb(context) ? 200 : 150,
                           child: primaryButton(
                               colorText: kColorSky,
                               color: kColorWhite,
@@ -43,7 +44,7 @@ class ResultScreen extends StatelessWidget {
                         ),
                         SizedBox(
                           height: 45,
-                          width: 200,
+                          width: Responsive.isWeb(context) ? 200 : 150,
                           child: primaryButton(
                               colorText: kColorWhite,
                               color: kColorSky,

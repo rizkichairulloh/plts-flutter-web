@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:plts/controllers/home_controller.dart';
 import 'package:plts/utilities/constants.dart';
+import 'package:plts/utilities/responsive.dart';
 import 'package:plts/utilities/typography.dart';
 import 'package:plts/widgets/primary_button.dart';
 import 'package:plts/widgets/widget_input.dart';
@@ -24,14 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            child: SizedBox(
+            child: Container(
               width: Get.width,
+              padding: Responsive.isWeb(context) ? const EdgeInsets.all(0) : const EdgeInsets.symmetric(horizontal: 25),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 50,),
-                  Text("Anda Ingin Memasang PLTS", style: kTextHeader1,),
+                  Text("Anda Ingin Memasang PLTS", style: kTextHeader1, textAlign: TextAlign.center,),
                   const SizedBox(height: 22,),
                   formDropdownButton(
                       "Tipe",
@@ -67,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             });
                           },
                           buttonHeight: 45,
-                          buttonWidth: Get.width / 3,
+                          buttonWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width,
                           itemHeight: 40,
                           iconSize: 16,
                           buttonPadding: const EdgeInsets.only(left: 14, right: 14),
@@ -78,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           itemPadding: const EdgeInsets.only(left: 14, right: 14),
                           dropdownMaxHeight: 200,
-                          dropdownWidth: Get.width / 3,
+                          dropdownWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width ,
                           dropdownPadding: null,
                           dropdownDecoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
@@ -120,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           });
                         },
                         buttonHeight: 45,
-                        buttonWidth: Get.width / 3,
+                        buttonWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width,
                         itemHeight: 40,
                         iconSize: 16,
                         buttonPadding: const EdgeInsets.only(left: 14, right: 14),
@@ -131,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         itemPadding: const EdgeInsets.only(left: 14, right: 14),
                         dropdownMaxHeight: 200,
-                        dropdownWidth: Get.width / 3,
+                        dropdownWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width,
                         dropdownPadding: null,
                         dropdownDecoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
@@ -145,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(height: paddingDefault,),
                   Obx(() => controller.showDropdown.value != false ? SizedBox(
-                    width: Get.width / 3,
+                    width: Responsive.isWeb(context) ? Get.width / 3 : Get.width,
                     child: Column(
                       children: [
                         formInput(
@@ -168,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ) : const SizedBox()),
                   const SizedBox(height: 22,),
                   SizedBox(
-                    width: Get.width / 3,
+                    width: Responsive.isWeb(context) ? Get.width / 3 : 100,
                     height: 45,
                     child: primaryButton(
                         colorText: kColorWhite,
