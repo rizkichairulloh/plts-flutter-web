@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           itemPadding: const EdgeInsets.only(left: 14, right: 14),
                           dropdownMaxHeight: 200,
-                          dropdownWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width ,
+                          dropdownWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width - 50 ,
                           dropdownPadding: null,
                           dropdownDecoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         itemPadding: const EdgeInsets.only(left: 14, right: 14),
                         dropdownMaxHeight: 200,
-                        dropdownWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width,
+                        dropdownWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width - 50,
                         dropdownPadding: null,
                         dropdownDecoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
@@ -169,10 +169,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         label: "Hitung",
                         isActive: true,
                         onTap: () {
-                          if (selectedValue2 != null || selectedValue != null) {
+                          if (selectedValue2 != null && selectedValue != null) {
                             Get.toNamed("/hasil");
                           } else {
-                            Get.snackbar("Error", "Inputan belum selesai");
+                            Get.snackbar(
+                                "Error",
+                                "Inputan belum selesai",
+                                maxWidth: Responsive.isWeb(context) ? Get.width / 3 : Get.width / 2,
+                                snackPosition: SnackPosition.BOTTOM,
+                                margin: const EdgeInsets.only(bottom: 100),
+                                colorText: Colors.red,
+                            );
                           }
                         }
                     ),
