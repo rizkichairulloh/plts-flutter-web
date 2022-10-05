@@ -1,6 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:plts/controllers/home_controller.dart';
 import 'package:plts/utilities/constants.dart';
@@ -62,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             setState(() {
                               selectedValue = value as String;
                               String? se;
-                              if (selectedValue == "Residensial - Tipe Sambungan") {
+                              if (selectedValue == "Residential - Tipe Sambungan") {
                                 selectedValue2 = se;
                                 controller.itemsDefault = controller.itemsSambunganResidential;
                               } else if (selectedValue == "Komersial - Tipe Sambungan") {
@@ -128,6 +127,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         onChanged: (value) {
                           setState(() {
                             selectedValue2 = value as String;
+                            for (int i = 0; i < controller.itemsDefault.length; i++) {
+                              if (selectedValue2 == controller.itemsDefault[i].title) {
+                                controller.nameFile.value = controller.itemsDefault[i].nameFile;
+                              }
+                            }
                           });
                         },
                         buttonHeight: 45,
@@ -165,7 +169,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         label: "Hitung",
                         isActive: true,
                         onTap: () {
-                          Get.toNamed("/hasil");
+                          if (selectedValue2 != null || selectedValue != null) {
+                            Get.toNamed("/hasil");
+                          } else {
+                            Get.snackbar("Error", "Inputan belum selesai");
+                          }
                         }
                     ),
                   )

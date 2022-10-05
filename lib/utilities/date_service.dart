@@ -1,5 +1,4 @@
 import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 class DateService {
   static String convertDateFormat({required String dateTimeString, required String oldFormat, required String newFormat}) {
