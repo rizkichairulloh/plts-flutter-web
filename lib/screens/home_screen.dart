@@ -61,10 +61,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           onChanged: (value) {
                             setState(() {
                               selectedValue = value as String;
+                              String? se;
                               if (selectedValue == "Residensial - Tipe Sambungan") {
-                                controller.showDropdown.value = true;
-                              } else {
-                                controller.showDropdown.value = false;
+                                selectedValue2 = se;
+                                controller.itemsDefault = controller.itemsSambunganResidential;
+                              } else if (selectedValue == "Komersial - Tipe Sambungan") {
+                                selectedValue2 = se;
+                                controller.itemsDefault = controller.itemsSambunganKomersial;
+                              } else if (selectedValue == "Industri - Tipe Sambungan") {
+                                selectedValue2 = se;
+                                controller.itemsDefault = controller.itemsSambunganIndustri;
+                              } else if (selectedValue == "Pemerintah - Tipe Sambungan") {
+                                selectedValue2 = se;
+                                controller.itemsDefault = controller.itemsSambunganPemerintah;
                               }
                             });
                           },
@@ -94,17 +103,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(height: paddingDefault,),
                   formDropdownButton(
-                      "Besar Sambungan",
+                      "Kapasitas Sambungan PLN Existing",
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton2(
                         hint: Text(
-                          'Pilih besar sambungan',
+                          'Pilih kapasitas',
                           style: TextStyle(
                             fontSize: 14,
                             color: Theme.of(context).hintColor,
                           ),
                         ),
-                        items: controller.itemsBesarSambungan.map((item) =>
+                        items: controller.itemsDefault.map((item) =>
                             DropdownMenuItem<String>(
                               value: item.title,
                               child: Text(
@@ -145,29 +154,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: paddingDefault,),
-                  Obx(() => controller.showDropdown.value != false ? SizedBox(
-                    width: Responsive.isWeb(context) ? Get.width / 3 : Get.width,
-                    child: Column(
-                      children: [
-                        formInput(
-                          "Persentase(%) Load",
-                          hint: "Masukkan persentase load yang ingin dibackup",
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly
-                          ],
-                        ),
-                        SizedBox(height: paddingDefault,),
-                        formInput(
-                          "Durasi Jam",
-                          hint: "Masukkan durasi jam yang ingin dibackup",
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly
-                          ],
-                        ),
-                      ],
-                    ),
-                  ) : const SizedBox()),
                   const SizedBox(height: 22,),
                   SizedBox(
                     width: Responsive.isWeb(context) ? Get.width / 3 : 100,
