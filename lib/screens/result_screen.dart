@@ -24,7 +24,6 @@ class _ResultScreenState extends State<ResultScreen> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +40,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   height: Get.height,
                   child: PdfViewPinch(
                     controller: pdfController,
-                    onDocumentLoaded: (document) {
+                      onDocumentLoaded: (document) {
                       setState(() {
                         _allPagesCount = document.pagesCount;
                       });
@@ -51,6 +50,16 @@ class _ResultScreenState extends State<ResultScreen> {
                         _actualPageNumber = page;
                       });
                     },
+                    builders: PdfViewPinchBuilders<DefaultBuilderOptions>(
+                      options: const DefaultBuilderOptions(
+                        loaderSwitchDuration: Duration(seconds: 1),
+                      ),
+                      documentLoaderBuilder: (_) =>
+                      const Center(child: CircularProgressIndicator()),
+                      pageLoaderBuilder: (_) =>
+                      const Center(child: CircularProgressIndicator()),
+                      errorBuilder: (_, error) => Center(child: Text(error.toString())),
+                    ),
                   ),
                 ),
               ),
