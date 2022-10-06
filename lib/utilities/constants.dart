@@ -15,5 +15,5 @@ Color kColorOrange = const Color(0xFFFF7A58);
 Color kColorSky = const Color(0xFF2B8BFD);
 Color kColorOrange16 = const Color(0xFFFFEAE4);
 Color kColorSky16 = const Color(0xFFDDECFF);
-double paddingDefault = 16.0;
+double paddingDefault = 10.0;
 

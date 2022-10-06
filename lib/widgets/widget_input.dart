@@ -37,70 +37,67 @@ Widget formInput(
       ),
       const SizedBox(
           height: 10.0),
-      SizedBox(
-        height: 45,
-        child: TextFormField(
-          maxLines: maxLines,
-          keyboardType: keyboardType,
-          cursorColor: kColorBlack,
-          controller: controller,
-          inputFormatters: inputFormatters,
-          obscureText: obsecureText,
-          autofocus: autoFocus,
-          textInputAction: inputAction,
-          onFieldSubmitted: fieldSubmitted,
-          maxLength: maxLength,
-          focusNode: focusNode,
-          readOnly: readOnly,
-          textAlign: textAlign,
-          autovalidateMode: autoValidateMode,
-          style: TextStyle(
-            fontSize: 14.0,
-          ),
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: kColorWhite,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            hintText: hint,
-            suffix: suffix,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
-              ),
-              borderSide: BorderSide(
-                color: kColorGrey2,
-              ),
-            ),
-            contentPadding: EdgeInsets.symmetric(
-              vertical: 14.0,
-              horizontal: 14.0,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
-              ),
-              borderSide: BorderSide(
-                color: kColorGrey2,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
-              ),
-              borderSide: BorderSide(
-                color: kColorGrey2,
-              ),
-            ),
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-          ),
-          validator: validator,
-          onSaved: onSaved,
-          onChanged: onChanged,
-          onTap: onTap,
+      TextFormField(
+        maxLines: maxLines,
+        keyboardType: keyboardType,
+        cursorColor: kColorBlack,
+        controller: controller,
+        inputFormatters: inputFormatters,
+        obscureText: obsecureText,
+        autofocus: autoFocus,
+        textInputAction: inputAction,
+        onFieldSubmitted: fieldSubmitted,
+        maxLength: maxLength,
+        focusNode: focusNode,
+        readOnly: readOnly,
+        textAlign: textAlign,
+        autovalidateMode: autoValidateMode,
+        style: const TextStyle(
+          fontSize: 14.0,
         ),
-      )
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: kColorWhite,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          hintText: hint,
+          suffix: suffix,
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8.0),
+            ),
+            borderSide: BorderSide(
+              color: kColorGrey2,
+            ),
+          ),
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 14.0,
+            horizontal: 14.0,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8.0),
+            ),
+            borderSide: BorderSide(
+              color: kColorGrey2,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8.0),
+            ),
+            borderSide: BorderSide(
+              color: kColorGrey2,
+            ),
+          ),
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+        ),
+        validator: validator,
+        onSaved: onSaved,
+        onChanged: onChanged,
+        onTap: onTap,
+      ),
     ],
   );
 }
@@ -119,11 +116,11 @@ Widget formSelect(
         text,
         style: kTextBody,
       ),
-      SizedBox(height: 10,),
+      const SizedBox(height: 10,),
       TextFormField(
         controller: controller,
         readOnly: true,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 14.0,
         ),
         validator: validator,
@@ -134,19 +131,19 @@ Widget formSelect(
           hoverColor: Colors.transparent,
           hintText: hint,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(8.0),
             ),
             borderSide: BorderSide(
               color: kColorGrey2,
             ),
           ),
-          contentPadding: EdgeInsets.symmetric(
+          contentPadding: const EdgeInsets.symmetric(
             vertical: 7.0,
             horizontal: 14.0,
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(8.0),
             ),
             borderSide: BorderSide(
@@ -154,7 +151,7 @@ Widget formSelect(
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(8.0),
             ),
             borderSide: BorderSide(
@@ -195,7 +192,7 @@ Widget formCurrency(text, {controller, hint, validator, autoValidateMode}) {
     controller: controller,
     autoValidateMode: autoValidateMode,
     prefixIcon: Padding(
-      padding: EdgeInsets.all(14.0),
+      padding: const EdgeInsets.all(14.0),
       child: Text(
         "Rp",
         style: kTextBody.copyWith(fontWeight: FontWeight.w700),
@@ -219,7 +216,7 @@ Widget formUnit(text, suffixText, {controller, hint, validator}) {
     text,
     controller: controller,
     suffixIcon: Padding(
-      padding: EdgeInsets.all(14.0),
+      padding: const EdgeInsets.all(14.0),
       child: Text(
         suffixText,
         style: kTextBody.copyWith(fontWeight: FontWeight.w700),

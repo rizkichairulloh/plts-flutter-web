@@ -1,23 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plts/models/item_dropdown.dart';
+import 'package:http/http.dart' as http;
 
 class HomeController extends GetxController {
+  final GlobalKey<FormState> keyForm = GlobalKey<FormState>();
+
   var itemsTransaction = <ItemDropdown>[
     ItemDropdown(index: "0", title: "Residential - Tipe Sambungan", nameFile: ""),
     ItemDropdown(index: "1", title: "Komersial - Tipe Sambungan", nameFile: ""),
     ItemDropdown(index: "2", title: "Industri - Tipe Sambungan", nameFile: ""),
     ItemDropdown(index: "3", title: "Pemerintah - Tipe Sambungan", nameFile: ""),
   ];
-
-  // var itemsBesarSambungan = <ItemDropdown>[
-  //   ItemDropdown(index: "0", title: "450"),
-  //   ItemDropdown(index: "1", title: "900"),
-  //   ItemDropdown(index: "3", title: "1300"),
-  //   ItemDropdown(index: "4", title: "2200"),
-  //   ItemDropdown(index: "5", title: "4500"),
-  //   ItemDropdown(index: "6", title: "5500"),
-  //   ItemDropdown(index: "7", title: "7700"),
-  // ];
 
   var itemsSambunganResidential = <ItemDropdown>[
     ItemDropdown(index: "0", title: "1300 Va", nameFile: "R1"),
@@ -85,4 +79,54 @@ class HomeController extends GetxController {
 
   var selectedIndex = '0'.obs;
   var nameFile = ''.obs;
+  var name = TextEditingController().obs;
+  var noTelp = TextEditingController().obs;
+  var email = TextEditingController().obs;
+  var isLoading = false.obs;
+
+
+  Future postData({required String time, required String name, required String noTelp, required String email, required String tipe, required String kapasitas, required String nameFile}) async {
+    isLoading.value = true;
+
+    try {
+      var url = Uri.parse('https://script.google.com/macros/s/AKfycbwZ-sDYd5nGs2NoUXCL-8rOpS7S-2fYXrbZOZcnzfQBU3g0mOlVUARrL48cVSGaVrUy/exec');
+      var response = await http.post(url,
+      body: {
+        'time': time,
+        'name': name,
+        'noTelepon': noTelp,
+        'email': email,
+        'tipe': tipe,
+        'kapasitas': kapasitas,
+        'nameFile': nameFile,
+      });
+
+      debugPrint("POST DATA : ${response.statusCode}");
+      if (response.statusCode == 200) {
+        isLoading.value = false;
+        Get.toNamed("/hasil");
+      }  else {
+        isLoading.value = false;
+        Get.snackbar(
+          "Error",
+          "Terjadi Kesalahan Teknis, cek koneksi internet Anda",
+          maxWidth: Get.width / 2,
+          snackPosition: SnackPosition.BOTTOM,
+          margin: const EdgeInsets.only(bottom: 100),
+          colorText: Colors.red,
+        );
+      }
+    } catch (e) {
+      isLoading.value = false;
+      Get.snackbar(
+        "Error",
+        "Terjadi kesalahan teknis, cek koneksi internet Anda",
+        maxWidth: Get.width / 2,
+        snackPosition: SnackPosition.BOTTOM,
+        margin: const EdgeInsets.only(bottom: 100),
+        colorText: Colors.red,
+      );
+      debugPrint(e.toString());
+    }
+  }
 }
